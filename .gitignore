@@ -1,0 +1,6 @@
+# ide
+.idea
+
+# cmake generated files
+**cmake-build-**
+
