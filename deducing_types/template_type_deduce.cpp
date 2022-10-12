@@ -42,6 +42,15 @@ void f4(T param) {
   PRINT_PARAM_TYPE(param);
 }
 
+// 以编译期常量形式返回数组尺寸
+template<typename T, std::size_t N>
+constexpr std::size_t ArraySize(T (&)[N]) noexcept {
+  return N;
+}
+
+void SomeFunc(int, double) {
+}
+
 int main() {
   int x = 27;
   const int cx = x;
@@ -70,5 +79,16 @@ int main() {
   f4(ptr); // T为const char*, ParamType为const char*
   char* ptr2 = nullptr;
   f4(ptr2); // T为char*, ParamType为char*
+
+  // 5. 当实参为数组
+  int arr[] = {1, 2, 3};
+  f4(arr); // T为int*, ParamType为int*， arr实参退化为指针形参
+  f(arr); // T为int(&)[3], ParamType为int(&)[3]
+  // 根据T&形参可以获取到完整的实参类型，因此可以通过T&形参获取到数组的尺寸
+  std::cout << ArraySize(arr) << std::endl; // 3
+
+  // 6. 当实参为函数
+  f4(SomeFunc); // T为void(*)(int, double), ParamType为void(*)(int, double)
+  f(SomeFunc); // T为void(&)(int, double), ParamType为void(&)(int, double)
   return 0;
 }
