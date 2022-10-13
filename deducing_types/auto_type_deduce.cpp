@@ -16,6 +16,8 @@ int main() {
   PRINT_TYPE(cx); // const int
   const auto& rx = x;
   PRINT_TYPE(rx); // const int&
+  const auto rx2 = rx;
+  PRINT_TYPE(rx2); // const int
 
   auto&& uref1 = x; // int&
   PRINT_TYPE(uref1);

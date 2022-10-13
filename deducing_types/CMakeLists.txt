@@ -19,3 +19,7 @@ target_link_libraries(template_type_deduce ${Boost_LIBRARIES})
 # auto type deduce.
 add_executable(auto_type_deduce auto_type_deduce.cpp)
 target_link_libraries(auto_type_deduce ${Boost_LIBRARIES})
+
+# decltype.
+add_executable(decltype decltype.cpp)
+target_link_libraries(decltype ${Boost_LIBRARIES})
