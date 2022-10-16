@@ -7,3 +7,6 @@ template、auto、decltype的类别推导，阐释类别推导的运作方式，
 ## auto
 auto使用的一些优点和一些需要注意的地方。
 
+## move_to_modern_cpp
+转向现代c++编程
+
