@@ -1,5 +1,5 @@
-# awesome_cpp
-记录一些优秀的c++编程，比如现代c++编程、高性能优化、模板编程等等...
+# awesome_modern_cpp
+记录一些优秀的现代(c11以上)c++编程，比如现代c++编程特性、现代模板编程、高性能优化等等...
 
 ## deducing_types
 template、auto、decltype的类别推导，阐释类别推导的运作方式，template类别推导与auto类别推导的关系，decltype一些使用场景等。
