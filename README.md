@@ -10,3 +10,5 @@ auto使用的一些优点和一些需要注意的地方。
 ## move_to_modern_cpp
 转向现代c++编程
 
+## smart_ptr
+智能指针

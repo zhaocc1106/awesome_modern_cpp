@@ -48,7 +48,7 @@ class SuccessDerived : public Base {
   void mf3()& override {
     std::cout << "SuccessDerived::mf3()" << std::endl;
   }
-  ~SuccessDerived() override {
+  ~SuccessDerived() override { // 定义override的析构函数，不需要virtual
     std::cout << "SuccessDerived::~SuccessDerived()" << std::endl;
   }
 };
