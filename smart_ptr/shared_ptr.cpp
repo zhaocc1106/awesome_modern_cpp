@@ -51,5 +51,20 @@ int main() {
   // 使用自定义的删除器，删除器的类型不属于shared_ptr的一部分，因此可以使用不同的删除器
   std::shared_ptr<Item> p12(new Item, logging_deleter);
 
+  // make_shared比new创建shared_ptr更高效，因为make_shared申请对象内存和控制块内存是一起申请的，所以优先要使用make_shared创建shared_ptr
+  begin = std::chrono::system_clock::now();
+  for (int i = 0; i < 100000; ++i) {
+    auto p13 = std::make_shared<Item>();
+  }
+  end = std::chrono::system_clock::now();
+  std::cout << "make_shared: " << (end - begin).count() << "ns" << std::endl; // 6185ns
+
+  begin = std::chrono::system_clock::now();
+  for (int i = 0; i < 100000; ++i) {
+    auto p14 = std::shared_ptr<Item>(new Item);
+  }
+  end = std::chrono::system_clock::now();
+  std::cout << "shared_ptr with new: " << (end - begin).count() << "ns" << std::endl; // 22225ns
+
   return 0;
 }
