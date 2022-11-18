@@ -12,3 +12,6 @@ auto使用的一些优点和一些需要注意的地方。
 
 ## smart_ptr
 智能指针
+
+## 现代c++并发编程
+https://github.com/zhaocc1106/modern_cpp_concurrent_program
