@@ -17,3 +17,6 @@ target_link_libraries(distinguish_rvalue_ref_and_universal_ref ${Boost_LIBRARIES
 
 add_executable(perfect_forward perfect_forward.cpp)
 target_link_libraries(perfect_forward ${Boost_LIBRARIES})
+
+add_executable(tag_dispatch tag_dispatch.cpp)
+target_link_libraries(tag_dispatch ${Boost_LIBRARIES})
