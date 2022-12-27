@@ -41,7 +41,7 @@ template<typename T>
 void log_and_add2(T&& name) {
   // std::cout << "log_and_add2(T&& name) " << name << std::endl;
   log_and_add_impl(std::forward<T>(name),
-                   std::is_integral<typename std::remove_reference_t<T>>()); // 如果是整数类型，就调用log_and_add(int idx)函数
+                   std::is_integral<typename std::remove_reference_t<T>>()); // 如果是整数类型，就调用调用log_and_add_impl(int idx, std::true_type)函数
 }
 
 int main() {
@@ -59,8 +59,8 @@ int main() {
   log_and_add2(new_name); // 调用log_and_add_impl(T&& name, std::false_type)
   log_and_add2("John"); // 调用log_and_add_impl(T&& name, std::false_type)
   log_and_add2(std::string("Frank")); // 调用log_and_add_impl(T&& name, std::false_type)
-  log_and_add2(0); // 调用log_and_add_impl(T&& name, std::false_type)
-  log_and_add2(1); // 调用log_and_add_impl(T&& name, std::false_type)
+  log_and_add2(0); // 调用log_and_add_impl(int idx, std::true_type)
+  log_and_add2(1); // 调用log_and_add_impl(int idx, std::true_type)
   log_and_add2(idx); // 调用log_and_add_impl(int idx, std::true_type)
   return 0;
 }
