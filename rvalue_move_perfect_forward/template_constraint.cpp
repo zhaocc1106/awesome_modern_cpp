@@ -35,7 +35,7 @@ class TruePerson {
               !std::is_integral_v<std::remove_reference_t<T>> // 不是整形，防止整形调用到万能引用构造函数
       >
   >
-  explicit TruePerson(T&& name) : name_(std::forward<T>(name)) { // 想通过接受可以转换为string类型的所有类型的构造函数，但是和其他的构造函数冲突了
+  explicit TruePerson(T&& name) : name_(std::forward<T>(name)) { // 通过模板约束，解决构造函数冲突问题
     std::cout << "TruePerson(T&&)" << std::endl;
   }
 
