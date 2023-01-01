@@ -1,6 +1,11 @@
 #include <iostream>
 #include <set>
 #include <unordered_map>
+#include <boost/type_index.hpp>
+
+using boost::typeindex::type_id_with_cvr;
+
+#define PRINT_TYPE(x) std::cout << #x << ": " << type_id_with_cvr<decltype(x)>().pretty_name() << std::endl
 
 std::multiset<std::string> names;
 template<typename T>
@@ -34,6 +39,7 @@ void log_and_add_impl(int idx, std::true_type) {
 template<typename T>
 void log_and_add_impl(T&& name, std::false_type) {
   std::cout << "log_and_add_impl(T&& name, std::false_type) " << name << std::endl;
+  PRINT_TYPE(name);
   names.insert(std::forward<T>(name));
 }
 

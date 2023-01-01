@@ -20,3 +20,6 @@ target_link_libraries(perfect_forward ${Boost_LIBRARIES})
 
 add_executable(tag_dispatch tag_dispatch.cpp)
 target_link_libraries(tag_dispatch ${Boost_LIBRARIES})
+
+add_executable(template_constraint template_constraint.cpp)
+target_link_libraries(template_constraint ${Boost_LIBRARIES})
