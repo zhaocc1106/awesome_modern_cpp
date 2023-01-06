@@ -64,7 +64,28 @@ T&& reduce_and_copy2(T&& item) {
   return std::forward<T>(item);
 }
 
+void test(int& i) {
+  std::cout << "lvalue reference" << std::endl;
+}
+
+void test(int&& i) {
+  std::cout << "rvalue reference" << std::endl;
+}
+
 int main() {
+  // 理解forward的作用
+  int i = 0;
+  int& j = i; // 左值引用
+  int&& k = i++; // 右值引用
+  auto&& l = std::forward<decltype(j)>(j); // forward保持原来的引用类型
+  PRINT_PARAM_TYPE(l); // int&
+  test(l); // 调用左值引用参数的函数，test(int& i)
+  auto&& m = std::forward<decltype(k)>(k); // forward保持原来的引用类型
+  PRINT_PARAM_TYPE(m); // int&&
+  test(m); // 调用左值引用参数的函数，因为右值引用本身是左值，test(int& i)
+  test(std::forward<decltype(k)>(k)); // 调用右值引用参数的函数，test(int&& i)
+
+  // 作为参数使用场景
   std::string new_name("James");
   log_and_add(new_name); // 传递左值，一次拷贝
   log_and_add(std::string("Sarah")); // 传递右值，一次拷贝而不是一次移动
@@ -74,6 +95,7 @@ int main() {
   log_and_add2(std::string("Sarah")); // 传递右值，一次移动
   log_and_add2("Mike"); // 传递字符串字面值，在插入到set时才产生一个std::string对象
 
+  // 作为返回值使用场景
   Item item;
   reduce_and_copy(item); // 传递左值，函数返回产生一次拷贝
   std::cout << "-----" << std::endl;
