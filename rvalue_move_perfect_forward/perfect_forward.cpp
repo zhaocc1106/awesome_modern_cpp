@@ -80,6 +80,7 @@ int main() {
   auto&& l = std::forward<decltype(j)>(j); // forward保持原来的引用类型
   PRINT_PARAM_TYPE(l); // int&
   test(l); // 调用左值引用参数的函数，test(int& i)
+  test(std::forward<decltype(j)>(j)); // 调用左值引用参数的函数，test(int& i)
   auto&& m = std::forward<decltype(k)>(k); // forward保持原来的引用类型
   PRINT_PARAM_TYPE(m); // int&&
   test(m); // 调用左值引用参数的函数，因为右值引用本身是左值，test(int& i)
