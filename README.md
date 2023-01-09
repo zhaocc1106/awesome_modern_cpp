@@ -16,5 +16,8 @@ auto使用的一些优点和一些需要注意的地方。
 ## rvalue_move_perfect_forward
 右值，移动语义，完美转发
 
+## lambda
+lambda表达式
+
 ## 现代c++并发编程
 https://github.com/zhaocc1106/modern_cpp_concurrent_program
