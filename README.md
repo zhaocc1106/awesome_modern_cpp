@@ -19,5 +19,8 @@ auto使用的一些优点和一些需要注意的地方。
 ## lambda
 lambda表达式
 
+## template
+现代模板编程
+
 ## 现代c++并发编程
 https://github.com/zhaocc1106/modern_cpp_concurrent_program
