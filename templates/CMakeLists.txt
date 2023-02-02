@@ -29,3 +29,9 @@ target_link_libraries(non_type_template ${Boost_LIBRARIES})
 
 add_executable(variable_template variable_template.cc)
 target_link_libraries(variable_template ${Boost_LIBRARIES})
+
+add_executable(variadic_template variadic_template.cc)
+target_link_libraries(variadic_template ${Boost_LIBRARIES})
+
+add_executable(fold_expression fold_expression.cc)
+target_link_libraries(fold_expression ${Boost_LIBRARIES})
